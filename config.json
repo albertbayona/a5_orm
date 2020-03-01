@@ -1,0 +1,17 @@
+
+{
+  "dbconf_dev":{
+    "driver":"mysql",
+    "dbhost":"localhost",
+    "dbuser":"albert_a3_mvc",
+    "dbpass":"linuxlinux",
+    "dbname":"albert_a3_mvc"
+  },
+  "dbconf_pro":{
+    "driver":"mysql",
+    "dbhost":"x.x.x.x",
+    "dbuser":"albert_a3_mvc",
+    "dbpass":"linuxlinux",
+    "dbname":"albert_a3_mvc"
+  }
+}
