@@ -1,7 +1,14 @@
 {
-	"autoload":{
-		"psr-4":{
-			"Rentit\\": "src/"
-		}
-	}
+  "name": "a5_orm",
+  "description": "primer proyecto con illuminate,questions",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/database": "^6.12"
+  }
+
 }

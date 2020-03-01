@@ -1,30 +1,30 @@
 <?php
 
 
-namespace Rentit;
+namespace App;
 
 
-abstract class Controller implements View,Model
+abstract class Controller implements View
 {
     protected $request;
     function __construct($request)
     {
         $this->request=$request;
-        session_start();
     }
 
-    function error(){
-        throw new \Exception("[ERROR::]:Non existent method");
+    function error($error = "[ERROR::]:Non existent method"){
+        throw new \Exception($error);
     }
 
     function render(array $dataview=null,string $template=null)
     {
         if ($dataview) {
             extract($dataview);//combierte en variables las posiciones de un array assoc
-            include 'templates/' . $this->request->getController() . '.tpl.php';
             //marca
             if ($template != "") {
                 include 'templates/' . $template . '.tpl.php';
+            }else{
+                include 'templates/' . $this->request->getController() . '.tpl.php';
             }
         }//si no se pasa dataview no se incuye nada
     }

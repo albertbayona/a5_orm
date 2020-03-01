@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Rentit;
+namespace App;
 
 
 interface View

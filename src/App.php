@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Rentit;
+namespace App;
 
 
 use mysql_xdevapi\Exception;
@@ -24,7 +24,7 @@ class App
             if (in_array($controller."controller",$routes)){
 
 
-                $nameController= "\Rentit\Controllers\\".ucfirst($controller)."Controller";
+                $nameController= "\App\Controllers\\".ucfirst($controller)."Controller";
     //        echo $nameController;
                 $objCont = new $nameController($request);
 //                var_dump($objCont);
@@ -39,10 +39,6 @@ class App
         }catch (\Exception $e){
             echo $e->getMessage();
         }
-
-
-
-
 
     }
 

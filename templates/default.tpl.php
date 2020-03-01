@@ -14,33 +14,47 @@
 
     <body>
 
-        <h1>Rentit</h1>
+        <h1>App</h1>
        <?php
         echo $error;
-        if (isset($_SESSION["user"]) ){
-            echo 'USER:"'.$_SESSION["user"].'"';
-            echo "<input type=\"button\" value=\"Sortir\" onclick=\"location.href = '/default/borrasession';\">";
-
-
-            if (isset($_SESSION["ven"]) && $_SESSION["ven"]==1 ){
-                ?>
-                <input type="button" value="Posar anunci" onclick="location.href = '/alquiler';">
-                <?php
-
+        if (isset($_SESSION["nom"]) ){
+            include __DIR__."/logged.tpl.php";
+        }else {
+            include __DIR__."/login.tpl.php";
+        }
+        //aqui va la logica de la tabla
+        $i=0;
+        $max_columnas= 4;
+        echo "<table>";
+        foreach ($ofertas as $oferta){
+            if($i == 0){
+                echo "<td>";
             }
-        }else{
-        ?>
-    <form class="" method="POST" action="/default/login">
-            <input type="text" name="user" placeholder="User">
-            <input type="password" name="pass" placeholder="Pass">
-            <input type="submit" name="submit" value="Log in" class="submit">
-            <a href="/sign"><input type="button" value="registrarse"/> </a>
-            <?php
-//            if($contrasenaMal ==1){
-//                echo "<p class='alert alert-warning'>Usuario/contraseña incorrecta</p>";
-            }
+            $apartment=$oferta->Apartment;
+            $user = $apartment->user;
             ?>
-        </form>
-    <?php echo $inmuebles;?>
+            <td>
+                <h1>Titol oferta:<?= $oferta->titol ?></h1>
+                <h3>Nom de l'apartament:<?= $apartment->title?></h3>
+                <h2>Lloc: <?= $apartment->lloc?></h2>
+                <h3>Nom del contacte: <?= $user->nom?></h3>
+                <h3>Correu electronic: <?= $user->email?></h3>
+                <h3>Disponibilitat: <?= $oferta->disponibilitat?></h3>
+            </td>
+            <?php
+            $i++;
+            if ($i ==$max_columnas){
+                echo "</td>";
+                $i=0;
+            }
+
+        }
+       echo "</table>";
+
+       ?>
+
+
+        <?php
+        ?>
     </body>
 </html>
